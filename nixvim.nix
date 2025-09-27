@@ -123,12 +123,8 @@ in
     catppuccin = {
       enable = true;
       settings = {
-        style = "mocha";
-        styles = {
-          comments = {
-            italic = false; # Disable italics in comments
-          };
-        };
+        light = "macchiato";
+        dark = "mocha";
       };
     };
   };
