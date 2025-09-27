@@ -120,12 +120,10 @@ in
   # If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
   colorschemes = {
     # https://nix-community.github.io/nixvim/colorschemes/tokyonight/index.html
-    tokyonight = {
+    catppuccin = {
       enable = true;
       settings = {
-        # Like many other themes, this one has different styles, and you could load
-        # any other, such as 'storm', 'moon', or 'day'.
-        style = "night";
+        style = "mocha";
         styles = {
           comments = {
             italic = false; # Disable italics in comments
@@ -150,7 +148,7 @@ in
   clipboard = {
     providers = {
       wl-copy.enable = true; # For Wayland
-      xsel.enable = true; # For X11
+      xsel.enable = false; # For X11
     };
 
     # Sync clipboard between OS and Neovim
