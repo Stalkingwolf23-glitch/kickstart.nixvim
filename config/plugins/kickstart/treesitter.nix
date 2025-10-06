@@ -40,6 +40,9 @@
       # xml
       yaml
 
+      java
+      c_sharp
+
       # Rust Development
       rust
       toml # Also for ZMK `keymap.toml`

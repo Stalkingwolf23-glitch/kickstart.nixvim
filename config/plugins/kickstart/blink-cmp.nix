@@ -3,9 +3,9 @@
   #    See the README about individual language/framework/plugin snippets:
   #    https://github.com/rafamadriz/friendly-snippets
   # https://nix-community.github.io/nixvim/plugins/friendly-snippets.html
-  # plugins.friendly-snippets = {
-  #   enable = true;
-  # };
+  plugins.friendly-snippets = {
+    enable = true;
+  };
 
   # Dependencies
   #
@@ -56,11 +56,12 @@
       };
 
       completion = {
+        ghost_text.enabled = false;
         # By default, you may press `<c-space>` to show the documentation.
         # Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = {
-          auto_show = false;
-          auto_show_delay_ms = 500;
+          auto_show = true;
+          window.border = "rounded";
         };
       };
 
@@ -97,6 +98,44 @@
       # Shows a signature help window while you type arguments for a function
       signature = {
         enabled = true;
+      };
+
+      menu = {
+        border = "rounded";
+        draw = {
+          columns = [
+            {
+              __unkeyed-1 = "label";
+            }
+            {
+              __unkeyed-1 = "kind_icon";
+              __unkeyed-2 = "kind";
+              gap = 1;
+            }
+            { __unkeyed-1 = "source_name"; }
+          ];
+          components = {
+            kind_icon = {
+              ellipsis = false;
+              text.__raw = ''
+                function(ctx)
+                  local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
+                  -- Check for both nil and the default fallback icon
+                  if not kind_icon or kind_icon == '󰞋' then
+                     -- Use our configured kind_icons
+                    return require('blink.cmp.config').appearance.kind_icons[ctx.kind] or ""
+                  end
+                  return kind_icon
+                end,
+                -- Optionally, you may also use the highlights from mini.icons
+                highlight = function(ctx)
+                  local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+                  return hl
+                end
+              '';
+            };
+          };
+        };
       };
     };
   };

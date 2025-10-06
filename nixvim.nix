@@ -1,7 +1,5 @@
 {
   pkgs,
-  lib,
-  config,
   ...
 }:
 let
@@ -23,6 +21,15 @@ in
     ./config/plugins/kickstart/neo-tree.nix
     ./config/plugins/kickstart/indent-blankline.nix
 
+    ./config/plugins/custom/fugitive.nix
+    ./config/plugins/custom/cutlass.nix
+    ./config/plugins/custom/bufferline.nix
+    ./config/plugins/custom/alpha.nix
+    ./config/plugins/custom/persistence.nix
+    ./config/plugins/custom/lualine.nix
+    ./config/plugins/custom/treesitter-context.nix
+    ./config/plugins/custom/ufo.nix
+
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
     #  Here are some example plugins that I've included in the Kickstart repository.
@@ -30,7 +37,7 @@ in
     #
     # ./config/plugins/kickstart/debug.nix
     # ./config/plugins/kickstart/lint.nix
-    # 
+    #
     # NOTE: Configure your own plugins `see https://nix-community.github.io/nixvim/`
     # Add your plugins to ./config/plugins/custom and import them below
   ];
@@ -169,6 +176,15 @@ in
 
     # Don't show the mode, since it's already in the statusline
     showmode = false;
+
+    # Make tab spacing be 2 spaces
+    tabstop = 2;
+    softtabstop = 2;
+    shiftwidth = 2;
+    expandtab = true;
+
+    smartindent = true;
+    wrap = true;
 
     # Enable break indent
     breakindent = true;

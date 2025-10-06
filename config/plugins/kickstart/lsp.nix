@@ -85,12 +85,16 @@
       #    `https://nix-community.github.io/nixvim/plugins/typescript-tools/index.html?highlight=typescript-tools#pluginstypescript-toolspackage`
       #
       # But for many setups the LSP (`ts_ls`) will work just fine
-      # ts_ls = {
-      #   enable = true;
-      # };
+      ts_ls = {
+        enable = true;
+      };
 
       # Nix lsp
       nil_ls = {
+        enable = true;
+      };
+
+      jdtls = {
         enable = true;
       };
 
