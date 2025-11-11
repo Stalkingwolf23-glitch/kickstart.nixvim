@@ -3,7 +3,7 @@
   ...
 }:
 let
-  enable_nerd_fonts = false;
+  enable_nerd_fonts = true;
 in
 {
   imports = [
@@ -29,17 +29,8 @@ in
     ./config/plugins/custom/lualine.nix
     ./config/plugins/custom/treesitter-context.nix
     ./config/plugins/custom/ufo.nix
-
-    # NOTE: Add/Configure additional plugins for Kickstart.nixvim
-    #
-    #  Here are some example plugins that I've included in the Kickstart repository.
-    #  Uncomment any of the lines below to enable them (you will need to restart nvim).
-    #
-    # ./config/plugins/kickstart/debug.nix
-    # ./config/plugins/kickstart/lint.nix
-    #
-    # NOTE: Configure your own plugins `see https://nix-community.github.io/nixvim/`
-    # Add your plugins to ./config/plugins/custom and import them below
+    ./config/plugins/custom/highlight-colors.nix
+    ./config/plugins/custom/neorg.nix
   ];
 
   /*
@@ -142,8 +133,6 @@ in
     # See `:help mapleader`
     mapleader = " ";
     maplocalleader = " ";
-
-    # Set to true if you have a Nerd Font installed and selected in the terminal
     have_nerd_font = enable_nerd_fonts;
   };
 
@@ -153,9 +142,6 @@ in
       wl-copy.enable = true; # For Wayland
       xsel.enable = false; # For X11
     };
-
-    # Sync clipboard between OS and Neovim
-    #  Remove this option if you want your OS clipboard to remain independent.
     register = "unnamedplus";
   };
 
@@ -198,6 +184,9 @@ in
 
     # Keep signcolumn on by default
     signcolumn = "yes";
+    foldlevel = 99;
+    foldlevelstart = 99;
+    foldenable = true;
 
     # Decrease update time
     updatetime = 250;
@@ -386,7 +375,21 @@ in
 
   plugins = {
     # Adds icons for plugins to utilize in ui
-    web-devicons.enable = enable_nerd_fonts;
+    web-devicons = {
+      enable = enable_nerd_fonts;
+      customIcons = {
+        override_by_extension = {
+          "nix" = {
+            icon = "";
+            color = "#7ebae4";
+            name = "Nix";
+          };
+        };
+      };
+      settings = {
+        color_icons = true;
+      };
+    };
 
     # Detect tabstop and shiftwidth automatically
     # https://nix-community.github.io/nixvim/plugins/sleuth/index.html
