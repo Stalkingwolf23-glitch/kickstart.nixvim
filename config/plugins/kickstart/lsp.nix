@@ -88,7 +88,9 @@
       ts_ls = {
         enable = true;
       };
-
+      cssls = {
+        enable = true;
+      };
       # Nix lsp
       nil_ls = {
         enable = true;
