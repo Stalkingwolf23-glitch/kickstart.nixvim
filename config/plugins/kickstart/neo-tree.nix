@@ -4,7 +4,7 @@
   plugins.neo-tree = {
     enable = true;
 
-    filesystem = {
+    settings = {
       window = {
         mappings = {
           "\\" = "close_window";
