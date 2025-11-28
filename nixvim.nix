@@ -30,7 +30,6 @@ in
     ./config/plugins/custom/treesitter-context.nix
     ./config/plugins/custom/ufo.nix
     ./config/plugins/custom/highlight-colors.nix
-    ./config/plugins/custom/neorg.nix
   ];
 
   /*
@@ -123,6 +122,7 @@ in
       settings = {
         light = "macchiato";
         dark = "mocha";
+        transparent_background = true;
       };
     };
   };
