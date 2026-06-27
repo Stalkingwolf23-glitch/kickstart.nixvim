@@ -1,4 +1,11 @@
 {
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
+
   plugins.highlight-colors = {
     enable = true;
     settings = {
